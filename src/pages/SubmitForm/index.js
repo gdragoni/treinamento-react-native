@@ -12,16 +12,16 @@ export default function SubmitForm({ navigation }) {
     const fields = fieldsLabels.map( label => ({
         label,
         value: navigation.getParam(label, null),
-    })).filter(f => f.value != null)
+    })).filter(f => f.value != null && f.value.length > 0)
 
   return (
     <SafeAreaView style={styles.container}>
         <View style={styles.form}>
             {
                 fields.map(field => 
-                    <View>
-                        <Text>{field.label}</Text>
-                        <Text>{field.value}</Text>
+                    <View style={styles.field}>
+                        <Text style={styles.textField}>{field.label}</Text>
+                        <Text style={styles.valueField}>{field.value}</Text>
                     </View>
                     )
             }

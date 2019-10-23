@@ -12,4 +12,26 @@ export default StyleSheet.create({
         width: "100%",
         padding: 12,
     },
+    field: {
+        justifyContent: "space-between",
+        minHeight: 40,
+        alignItems: "baseline",
+        flexDirection: "row",
+        marginVertical: 8,
+        flexWrap: "wrap",
+        borderBottomWidth: 1,
+    },
+    textField: {
+        color: "#222",
+        fontSize: 16,
+        fontWeight: "bold",
+        marginRight: 12,
+        marginBottom: 12,
+    },
+    valueField: {
+        color: "#555",
+        minWidth: 100,
+        textAlign: "right",
+        maxWidth: "auto",
+    }
 });
