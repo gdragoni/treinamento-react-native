@@ -21,6 +21,8 @@ export default function FormPage1({ navigation }) {
                 <Text style={styles.textField}>Nome</Text>
                 <TextInput
                     style={styles.inputField}
+                    placeholder="Inserir"
+                    autoCompleteType="name"
                     value={name}
                     onChangeText={value => setName(value)}
                 />
@@ -29,6 +31,8 @@ export default function FormPage1({ navigation }) {
                 <Text style={styles.textField}>Idade</Text>
                 <TextInput
                     style={styles.inputField}
+                    placeholder="Inserir"
+                    keyboardType="number-pad"
                     value={age}
                     onChangeText={value => setAge(value)}
                 />
@@ -37,6 +41,10 @@ export default function FormPage1({ navigation }) {
                 <Text style={styles.textField}>E-mail</Text>
                 <TextInput
                     style={styles.inputField}
+                    placeholder="Inserir"
+                    autoCorrect={false}
+                    email-address="email-address"
+                    autoCapitalize="none"
                     value={email}
                     onChangeText={value => setEmail(value)}
                 />
@@ -45,9 +53,9 @@ export default function FormPage1({ navigation }) {
         <Button 
         title="Next"
         onPress={() => navigation.navigate('formPage2', {
-            name,
-            age,
-            email,
+            Nome: name,
+            Idade: age,
+            "E-mail": email,
         })}
         />
     </SafeAreaView>
