@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
     View,
     Text,
@@ -10,9 +10,14 @@ import {
 import styles from './styles';
 
 export default function FormPage1({ navigation }) {
-    const [name, setName] = React.useState("");
-    const [age, setAge] = React.useState("");
-    const [email, setEmail] = React.useState("");
+    const [name, setName] = useState("");
+    const [age, setAge] = useState("");
+    const [email, setEmail] = useState("");
+    const [showNextButton, setShowNextButton] = useState(false);
+
+    useEffect(() => {
+        setShowNextButton(name.length && age.length && email.length);
+    }, [name, age, email]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -50,14 +55,17 @@ export default function FormPage1({ navigation }) {
                 />
             </View>
         </View>
-        <Button 
-        title="Next"
-        onPress={() => navigation.navigate('formPage2', {
-            Nome: name,
-            Idade: age,
-            "E-mail": email,
-        })}
-        />
+        {
+            Boolean(showNextButton) &&
+            <Button 
+                title="Next"
+                onPress={() => navigation.navigate('formPage2', {
+                    Nome: name,
+                    Idade: age,
+                    "E-mail": email,
+                })}
+            />
+        }
     </SafeAreaView>
   );
 }

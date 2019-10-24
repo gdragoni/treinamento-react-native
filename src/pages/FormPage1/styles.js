@@ -15,7 +15,7 @@ export default StyleSheet.create({
     field: {
         justifyContent: "space-between",
         minHeight: 40,
-        alignItems: "baseline",
+        alignItems: "center",
         flexDirection: "row",
         marginVertical: 8,
         flexWrap: "wrap",
