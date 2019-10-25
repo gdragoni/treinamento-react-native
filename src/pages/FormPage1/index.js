@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { 
-    View,
-    Text,
-    TextInput,
-    Button,
-    SafeAreaView,
- } from 'react-native';
 
-import styles from './styles';
+import {
+    Button
+} from 'react-native';
+
+import {
+    Container,
+    Form,
+    Field,
+    TextField,
+    InputField
+} from './styles';
 
 export default function FormPage1({ navigation }) {
     const [name, setName] = useState("");
@@ -20,32 +23,29 @@ export default function FormPage1({ navigation }) {
     }, [name, age, email]);
 
   return (
-    <SafeAreaView style={styles.container}>
-        <View style={styles.form}>
-            <View style={styles.field}>
-                <Text style={styles.textField}>Nome</Text>
-                <TextInput
-                    style={styles.inputField}
+    <Container>
+        <Form>
+            <Field>
+                <TextField>Nome</TextField>
+                <InputField
                     placeholder="Inserir"
                     autoCompleteType="name"
                     value={name}
                     onChangeText={value => setName(value)}
                 />
-            </View>
-            <View style={styles.field}>
-                <Text style={styles.textField}>Idade</Text>
-                <TextInput
-                    style={styles.inputField}
+            </Field>
+            <Field>
+                <TextField>Idade</TextField>
+                <InputField
                     placeholder="Inserir"
                     keyboardType="number-pad"
                     value={age}
                     onChangeText={value => setAge(value)}
                 />
-            </View>
-            <View style={styles.field}>
-                <Text style={styles.textField}>E-mail</Text>
-                <TextInput
-                    style={styles.inputField}
+            </Field>
+            <Field>
+                <TextField>E-mail</TextField>
+                <InputField
                     placeholder="Inserir"
                     autoCorrect={false}
                     email-address="email-address"
@@ -53,8 +53,8 @@ export default function FormPage1({ navigation }) {
                     value={email}
                     onChangeText={value => setEmail(value)}
                 />
-            </View>
-        </View>
+            </Field>
+        </Form>
         {
             Boolean(showNextButton) &&
             <Button 
@@ -66,7 +66,7 @@ export default function FormPage1({ navigation }) {
                 })}
             />
         }
-    </SafeAreaView>
+    </Container>
   );
 }
 

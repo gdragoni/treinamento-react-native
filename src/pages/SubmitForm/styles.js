@@ -1,37 +1,8 @@
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native';
 
-export default StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "space-between",
-        alignItems: "center",
-    },
-    form: {
-        flexDirection: "column",
-        flexWrap: "nowrap",
-        width: "100%",
-        padding: 12,
-    },
-    field: {
-        justifyContent: "space-between",
-        minHeight: 40,
-        alignItems: "baseline",
-        flexDirection: "row",
-        marginVertical: 8,
-        flexWrap: "wrap",
-        borderBottomWidth: 1,
-    },
-    textField: {
-        color: "#222",
-        fontSize: 16,
-        fontWeight: "bold",
-        marginRight: 12,
-        marginBottom: 12,
-    },
-    valueField: {
-        color: "#555",
-        minWidth: 100,
-        textAlign: "right",
-        maxWidth: "auto",
-    }
-});
+export const ValueField = styled.Text`
+    color: #555;
+    min-width: 100;
+    text-align: right;
+    max-width: auto;
+`;

@@ -1,11 +1,15 @@
 import React from 'react';
-import { 
-    View,
-    Text,
-    SafeAreaView,
- } from 'react-native';
 
-import styles from './styles';
+import {
+    Container,
+    Form,
+    Field,
+    TextField,
+} from '../FormPage1/styles';
+
+import {
+    ValueField
+} from './styles';
 
 export default function SubmitForm({ navigation }) {
     const fieldsLabels = ["Nome", "Idade", "E-mail", "Profissão", "Tempo de experiência", "Empresa atual"]; 
@@ -15,18 +19,18 @@ export default function SubmitForm({ navigation }) {
     })).filter(f => f.value != null && f.value.length > 0)
 
   return (
-    <SafeAreaView style={styles.container}>
-        <View style={styles.form}>
+    <Container>
+        <Form>
             {
                 fields.map(field => 
-                    <View style={styles.field}>
-                        <Text style={styles.textField}>{field.label}</Text>
-                        <Text style={styles.valueField}>{field.value}</Text>
-                    </View>
+                    <Field>
+                        <TextField>{field.label}</TextField>
+                        <ValueField>{field.value}</ValueField>
+                    </Field>
                     )
             }
-        </View>
-    </SafeAreaView>
+        </Form>
+    </Container>
   );
 }
 

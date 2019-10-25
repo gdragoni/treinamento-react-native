@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  View,
-  Text,
-  SafeAreaView,
-  TextInput,
-  Button,
-  Switch,
+
+import {
+    Button,
+    Switch,
 } from 'react-native';
 
-import styles from './styles';
+import {
+    Container,
+    Form,
+    Field,
+    TextField,
+    InputField
+} from '../FormPage1/styles';
 
 export default function FormPage2({ navigation }) {
     const [haveJob, setHaveJob] = useState(true);
@@ -23,50 +26,46 @@ export default function FormPage2({ navigation }) {
     }, [haveJob]);
 
   return (
-    <SafeAreaView style={styles.container}>
-        <View style={styles.form}>
-            <View style={styles.field}>
-                <Text style={styles.textField}>Possui emprego?</Text>
+    <Container>
+        <Form>
+            <Field>
+                <TextField>Possui emprego?</TextField>
                 <Switch
-                    placeholder="Inserir"
                     value={haveJob}
                     onValueChange={value => setHaveJob(value)}
                 />
-            </View>
+            </Field>
             {   
                 haveJob &&
                 <>
-                <View style={styles.field}>
-                    <Text style={styles.textField}>Profissão</Text>
-                    <TextInput
-                        style={styles.inputField}
+                <Field>
+                    <TextField>Profissão</TextField>
+                    <InputField
                         placeholder="Inserir"
                         value={profession}
                         onChangeText={value => setProfession(value)}
                     />
-                </View>
-                <View style={styles.field}>
-                    <Text style={styles.textField}>Tempo de experiência</Text>
-                    <TextInput
-                        style={styles.inputField}
+                </Field>
+                <Field>
+                    <TextField>Tempo de experiência</TextField>
+                    <InputField
                         placeholder="Inserir"
                         keyboardType="number-pad"
                         value={timeExperience}
                         onChangeText={value => setTimeExperience(value)}
                     />
-                </View>
-                <View style={styles.field}>
-                    <Text style={styles.textField}>Empresa atual</Text>
-                    <TextInput
-                        style={styles.inputField}
+                </Field>
+                <Field>
+                    <TextField>Empresa atual</TextField>
+                    <InputField
                         placeholder="Inserir"
                         value={currentCompany}
                         onChangeText={value => setCurrentCompany(value)}
                     />
-                </View>
+                </Field>
                 </>
             }
-        </View>
+        </Form>
         <Button 
         title="Next"
         onPress={() => navigation.navigate('submitForm', {
@@ -76,7 +75,7 @@ export default function FormPage2({ navigation }) {
             "Empresa atual": currentCompany,
         })}
         />
-    </SafeAreaView>
+    </Container>
   );
 };
 
