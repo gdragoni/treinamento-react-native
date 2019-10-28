@@ -19,12 +19,6 @@ export default function FormPage2({ navigation }) {
     const [timeExperience, setTimeExperience] = useState("");
     const [currentCompany, setCurrentCompany] = useState("");
 
-    useEffect(() => {
-        setProfession("");
-        setTimeExperience("");
-        setCurrentCompany("");
-    }, [haveJob]);
-
   return (
     <Container>
         <Form>
