@@ -16,12 +16,6 @@ export default function FormPage2({ navigation }) {
     const [timeExperience, setTimeExperience] = useState("");
     const [currentCompany, setCurrentCompany] = useState("");
 
-    useEffect(() => {
-        setProfession("");
-        setTimeExperience("");
-        setCurrentCompany("");
-    }, [haveJob]);
-
   return (
     <SafeAreaView style={styles.container}>
         <View style={styles.form}>
