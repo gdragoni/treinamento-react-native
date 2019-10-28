@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import {
     Container,
@@ -12,10 +13,19 @@ import {
 } from './styles';
 
 export default function SubmitForm({ navigation }) {
-    const fieldsLabels = ["Nome", "Idade", "E-mail", "Profissão", "Tempo de experiência", "Empresa atual"]; 
-    const fields = fieldsLabels.map( label => ({
-        label,
-        value: navigation.getParam(label, null),
+    const fieldsStoreVarNames = ["name", "age", "email", "profession", "timeExperience", "currentCompany"];
+    const fieldsLabels = {
+        name: "Nome", 
+        age: "Idade", 
+        email: "E-mail", 
+        profession: "Profissão", 
+        timeExperience: "Tempo de experiência", 
+        currentCompany: "Empresa atual"
+    };
+
+    const fields = fieldsStoreVarNames.map( varName => ({
+        label: fieldsLabels[varName],
+        value: useSelector(state => state[varName]),
     })).filter(f => f.value != null && f.value.length > 0)
 
   return (

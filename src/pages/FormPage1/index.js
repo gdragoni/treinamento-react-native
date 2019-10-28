@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import {
     Button
@@ -13,15 +14,17 @@ import {
 } from './styles';
 
 export default function FormPage1({ navigation }) {
-    const [name, setName] = useState("");
-    const [age, setAge] = useState("");
-    const [email, setEmail] = useState("");
-    const [showNextButton, setShowNextButton] = useState(false);
+    const name = useSelector(state => state.name);
+    const age = useSelector(state => state.age);
+    const email = useSelector(state => state.email);
+
+    const [showNextButton, setShowNextButton] = useState(null);
 
     useEffect(() => {
         setShowNextButton(name.length && age.length && email.length);
     }, [name, age, email]);
 
+    const dispatch = useDispatch();
   return (
     <Container>
         <Form>
@@ -31,7 +34,10 @@ export default function FormPage1({ navigation }) {
                     placeholder="Inserir"
                     autoCompleteType="name"
                     value={name}
-                    onChangeText={value => setName(value)}
+                    onChangeText={value => dispatch({
+                        type: 'SET_NAME',
+                        value
+                    })}
                 />
             </Field>
             <Field>
@@ -40,7 +46,10 @@ export default function FormPage1({ navigation }) {
                     placeholder="Inserir"
                     keyboardType="number-pad"
                     value={age}
-                    onChangeText={value => setAge(value)}
+                    onChangeText={value => dispatch({
+                        type: 'SET_AGE',
+                        value
+                    })}
                 />
             </Field>
             <Field>
@@ -51,7 +60,10 @@ export default function FormPage1({ navigation }) {
                     email-address="email-address"
                     autoCapitalize="none"
                     value={email}
-                    onChangeText={value => setEmail(value)}
+                    onChangeText={value => dispatch({
+                        type: 'SET_EMAIL',
+                        value
+                    })}
                 />
             </Field>
         </Form>
@@ -59,11 +71,7 @@ export default function FormPage1({ navigation }) {
             Boolean(showNextButton) &&
             <Button 
                 title="Next"
-                onPress={() => navigation.navigate('formPage2', {
-                    Nome: name,
-                    Idade: age,
-                    "E-mail": email,
-                })}
+                onPress={() => navigation.navigate('formPage2')}
             />
         }
     </Container>

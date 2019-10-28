@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import {
     Button,
@@ -14,17 +15,12 @@ import {
 } from '../FormPage1/styles';
 
 export default function FormPage2({ navigation }) {
-    const [haveJob, setHaveJob] = useState(true);
-    const [profession, setProfession] = useState("");
-    const [timeExperience, setTimeExperience] = useState("");
-    const [currentCompany, setCurrentCompany] = useState("");
+    const haveJob = useSelector(state => state.haveJob);
+    const profession = useSelector(state => state.profession);
+    const timeExperience = useSelector(state => state.timeExperience);
+    const currentCompany = useSelector(state => state.currentCompany);
 
-    useEffect(() => {
-        setProfession("");
-        setTimeExperience("");
-        setCurrentCompany("");
-    }, [haveJob]);
-
+    const dispatch = useDispatch();
   return (
     <Container>
         <Form>
@@ -32,7 +28,10 @@ export default function FormPage2({ navigation }) {
                 <TextField>Possui emprego?</TextField>
                 <Switch
                     value={haveJob}
-                    onValueChange={value => setHaveJob(value)}
+                    onValueChange={value => dispatch({
+                        type: 'SET_HAVEJOB',
+                        value
+                    })}
                 />
             </Field>
             {   
@@ -43,7 +42,10 @@ export default function FormPage2({ navigation }) {
                     <InputField
                         placeholder="Inserir"
                         value={profession}
-                        onChangeText={value => setProfession(value)}
+                        onChangeText={value => dispatch({
+                            type: 'SET_PROFESSION',
+                            value
+                        })}
                     />
                 </Field>
                 <Field>
@@ -52,7 +54,10 @@ export default function FormPage2({ navigation }) {
                         placeholder="Inserir"
                         keyboardType="number-pad"
                         value={timeExperience}
-                        onChangeText={value => setTimeExperience(value)}
+                        onChangeText={value => dispatch({
+                            type: 'SET_TIMEEXPERIENCE',
+                            value
+                        })}
                     />
                 </Field>
                 <Field>
@@ -60,7 +65,10 @@ export default function FormPage2({ navigation }) {
                     <InputField
                         placeholder="Inserir"
                         value={currentCompany}
-                        onChangeText={value => setCurrentCompany(value)}
+                        onChangeText={value => dispatch({
+                            type: 'SET_CURRENTCOMPANY',
+                            value
+                        })}
                     />
                 </Field>
                 </>
@@ -68,12 +76,7 @@ export default function FormPage2({ navigation }) {
         </Form>
         <Button 
         title="Next"
-        onPress={() => navigation.navigate('submitForm', {
-            ...navigation.state.params,
-            "Profissão": profession,
-            "Tempo de experiência": timeExperience,
-            "Empresa atual": currentCompany,
-        })}
+        onPress={() => navigation.navigate('submitForm')}
         />
     </Container>
   );
