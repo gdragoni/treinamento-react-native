@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-
+import api from "../../services";
 import {
     Container,
     Form,
@@ -11,6 +11,11 @@ import {
 import {
     ValueField
 } from './styles';
+
+import {
+    Button,
+    Alert,
+} from 'react-native';
 
 export default function SubmitForm({ navigation }) {
     const fieldsStoreVarNames = ["name", "age", "email", "profession", "timeExperience", "currentCompany"];
@@ -27,6 +32,16 @@ export default function SubmitForm({ navigation }) {
         label: fieldsLabels[varName],
         value: useSelector(state => state[varName]),
     })).filter(f => f.value != null && f.value.length > 0)
+    const form = useSelector(state => state);
+
+    async function send() {
+        const response = await api.post('cadastro', form);
+        console.log(response);
+        Alert.alert(
+            'Atenção',
+            response.data.message
+        )
+    }
 
   return (
     <Container>
@@ -40,6 +55,10 @@ export default function SubmitForm({ navigation }) {
                     )
             }
         </Form>
+        <Button 
+            title="Send"
+            onPress={() => send()}
+        />
     </Container>
   );
 }
