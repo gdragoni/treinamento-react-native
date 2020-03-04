@@ -1,4 +1,5 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
+import Reactotron from '../../ReactotronConfig'
 
 const INITIAL_STATE = {
     name: '',
@@ -59,4 +60,4 @@ function form(state = INITIAL_STATE, action) {
     }
 }
 
-export default createStore(form);
+export default createStore(combineReducers({ form }), Reactotron.createEnhancer());

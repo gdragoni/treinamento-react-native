@@ -25,7 +25,7 @@ export default function SubmitForm({ navigation }) {
 
     const fields = fieldsStoreVarNames.map( varName => ({
         label: fieldsLabels[varName],
-        value: useSelector(state => state[varName]),
+        value: useSelector(state => state.form[varName]),
     })).filter(f => f.value != null && f.value.length > 0)
 
   return (
@@ -33,7 +33,7 @@ export default function SubmitForm({ navigation }) {
         <Form>
             {
                 fields.map(field => 
-                    <Field>
+                    <Field key={field.label+field.value}>
                         <TextField>{field.label}</TextField>
                         <ValueField>{field.value}</ValueField>
                     </Field>

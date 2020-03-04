@@ -15,10 +15,10 @@ import {
 } from '../FormPage1/styles';
 
 export default function FormPage2({ navigation }) {
-    const haveJob = useSelector(state => state.haveJob);
-    const profession = useSelector(state => state.profession);
-    const timeExperience = useSelector(state => state.timeExperience);
-    const currentCompany = useSelector(state => state.currentCompany);
+    const haveJob = useSelector(state => state.form.haveJob);
+    const profession = useSelector(state => state.form.profession);
+    const timeExperience = useSelector(state => state.form.timeExperience);
+    const currentCompany = useSelector(state => state.form.currentCompany);
 
     const dispatch = useDispatch();
   return (
