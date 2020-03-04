@@ -14,9 +14,9 @@ import {
 } from './styles';
 
 export default function FormPage1({ navigation }) {
-    const name = useSelector(state => state.name);
-    const age = useSelector(state => state.age);
-    const email = useSelector(state => state.email);
+    const name = useSelector(state => state.form.name);
+    const age = useSelector(state => state.form.age);
+    const email = useSelector(state => state.form.email);
 
     const [showNextButton, setShowNextButton] = useState(null);
 
