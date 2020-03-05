@@ -57,8 +57,8 @@ export default function FormPage1({ navigation }) {
                 <InputField
                     placeholder="Inserir"
                     autoCorrect={false}
-                    email-address="email-address"
                     autoCapitalize="none"
+                    keyboardType="email-address"
                     value={email}
                     onChangeText={value => dispatch({
                         type: 'SET_EMAIL',
